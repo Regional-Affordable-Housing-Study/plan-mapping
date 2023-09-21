@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+	<head>
+		<title>Denver Region Plan Scores</title>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+		<link rel="stylesheet" href="map.css">
+		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+		<script type="text/javascript" src="plan.js"></script>
+  </head>
+	<body>
+		<div id="map"></div>
+		<fieldset class="inputs">
+		    <legend>Selections</legend>
+				<p>Plan Scoring:</p>
+				<div class="row">
+						<div class="column1">
+							<div>
+									<input type="radio" class = "section" id=cat0 name="map value" value="Total Score"
+													checked>
+									<label for="cat0">Total Score</label>
+									</div>
+							<div>
+									<input type="radio" class = "section" id=cat1 name="map value" value="CDBG and Homelesness"
+													unchecked>
+									<label for="cat1">CDBG and Homelesness</label>
+									</div>
+							<div>
+									<input type="radio" class = "section" id=cat2 name="map value" value="Comp Plan"
+													unchecked>
+									<label for="cat2">Comp Plan</label>
+									</div>
+							<div>
+									<input type="radio" class = "section" id=cat3 name="map value" value="Comp Plan - Inclusionary Zoning Implementation"
+													unchecked>
+									<label for="cat3">Comp Plan - Inclusionary Zoning Implementation</label>
+									</div>
+							<div>
+									<input type="radio" class = "section" id=cat4 name="map value" value="Comp and Housing Plans"
+													unchecked>
+									<label for="cat4">Comp and Housing Plans</label>
+									</div>
+							<div>
+									<input type="radio" class = "section" id=cat5 name="map value" value="Comp and Housing Plans - ADA Accesible and Senior Housing"
+													unchecked>
+									<label for="cat5">Comp and Housing Plans - ADA Accesible and Senior Housing</label>
+									</div>
+							<div>
+									<input type="radio" class = "section" id=cat6 name="map value" value="Comp and Zoning Plans -  Increased Density in SFR Areas through ADUs"
+													unchecked>
+									<label for="cat6">Comp and Zoning Plans -  Increased Density in SFR Areas through ADUs</label>
+									</div>
+													</div>
+													<div class="column2">
+							<div>
+									<input type="radio" class = "section" id=cat7 name="map value" value="HUD"
+													unchecked>
+									<label for="cat7">HUD</label>
+									</div>
+							<div>
+									<input type="radio" class = "section" id=cat8 name="map value" value="HUD Funding"
+													unchecked>
+									<label for="cat8">HUD Funding</label>
+									</div>
+							<div>
+									<input type="radio" class = "section" id=cat9 name="map value" value="Housing Plan"
+													unchecked>
+									<label for="cat9">Housing Plan</label>
+									</div>
+							<div>
+									<input type="radio" class = "section" id=cat10 name="map value" value="Housing and Economic Development"
+													unchecked>
+									<label for="cat10">Housing and Economic Development</label>
+									</div>
+							<div>
+									<input type="radio" class = "section" id=cat11 name="map value" value="Zoning Code - Supportive Housing, Halfway Houses, Group Housing, Single Room Occupancy, Housing First Zoning"
+													unchecked>
+									<label for="cat11">Zoning Code - Supportive Housing, Halfway Houses, Group Housing, Single Room Occupancy, Housing First Zoning</label>
+									</div>
+							<div>
+									<input type="radio" class = "section" id=cat12 name="map value" value="Zoning Plan - Mixed Use and Multi-Family Housing"
+													unchecked>
+									<label for="cat12">Zoning Plan - Mixed Use and Multi-Family Housing</label>
+									</div>
+							<div>
+									<input type="radio" class = "section" id=cat13 name="map value" value="Zoning Plan - Physical Constraints or Expansion on Mixed Use, Multi-Family Areas"
+													unchecked>
+									<label for="cat13">Zoning Plan - Physical Constraints or Expansion on Mixed Use, Multi-Family Areas</label>
+									</div>
+						</div>
+					</div>
+					<p>Counties and Typologies:</p>
+					<div class='row'>
+						<div class='column1'>
+							<input type="checkbox" class="county" name="County" value="Adams" checked="true">
+							<label for="Adams">Adams</label><br>
+							<input type="checkbox" class="county" name="County" value="Arapahoe" checked="true">
+							<label for="Arapahoe">Arapahoe</label><br>
+							<input type="checkbox" class="county" name="County" value="Boulder" checked="true">
+							<label for="Boulder">Boulder</label><br>
+							<input type="checkbox" class="county" name="County" value="Broomfield" checked="true">
+							<label for="Broomfield">Broomfield</label><br>
+							<input type="checkbox" class="county" name="County" value="Denver" checked="true">
+							<label for="Denver">Denver</label><br>
+							<input type="checkbox" class="county" name="County" value="Douglas" checked="true">
+							<label for="Douglas">Douglas</label><br>
+							<input type="checkbox" class="county" name="County" value="Jefferson" checked="true">
+							<label for="Jefferson">Jefferson</label><br>
+							<input type="checkbox" class="county" name="County" value="Weld" checked="true">
+							<label for="Weld">Weld</label>
+						</div>
+
+						<div class='column2'>
+							<input type="checkbox" class="type" name="type" value="Urban Core" checked="true">
+							<label for="Urban Core">Urban Core</label><br>
+							<input type="checkbox" class="type" name="type" value="Inner Ring Suburb" checked="true">
+							<label for="Inner Ring Suburb">Inner Ring Suburb</label><br>
+							<input type="checkbox" class="type" name="type" value="Inner Ring High Poverty" checked="true">
+							<label for="Inner Ring High Poverty">Inner Ring High Poverty</label><br>
+							<input type="checkbox" class="type" name="type" value="Established Suburb" checked="true">
+							<label for="Established Suburb">Established Suburb</label><br>
+							<input type="checkbox" class="type" name="type" value="Fast Growing Suburb" checked="true">
+							<label for="Fast Growing Suburb">Fast Growing Suburb</label><br>
+							<input type="checkbox" class="type" name="type" value="Wealthy Enclave" checked="true">
+							<label for="Wealthy Enclave">Wealthy Enclave</label><br>
+							<input type="checkbox" class="type" name="type" value="Developing Rural" checked="true">
+							<label for="Developing Rural">Developing Rural</label><br>
+							<input type="checkbox" class="type" name="type" value="County" checked="true">
+							<label for="County">County</label><br>
+							<input type="checkbox" class="type" name="type" value="Other" checked="true">
+							<label for="Other">Other</label>
+					</div>
+		</fieldset>
+
+		<script>
+			let checkboxStates = {
+				counties: [],
+				types: []
+			};
+
+			var startLoc = [39.7, -104.7];
+
+			var map = L.map('map').setView(startLoc, 9);
+
+			var Stamen_Toner = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.{ext}', {
+				attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+				subdomains: 'abcd',
+				minZoom: 0,
+				maxZoom: 20,
+				ext: 'png'
+			});
+
+	    map.addLayer(Stamen_Toner);
+
+			function getMax(arr, prop) {
+			    var max = 0;
+			    for (var i=0 ; i<arr.features.length ; i++) {
+			        v = parseInt(arr['features'][i]['properties'][prop])
+							if (v > max) {
+			            max = v;
+							}
+			    }
+			    return max;
+			};
+
+			var value = 'Total Score'
+			var mm = getMax(muni, value)
+
+			function getColor(d) {
+			    return d > Math.ceil(mm * 4 / 5) ? '#def5e5' :
+			           d > Math.ceil(mm * 3 / 5) ? '#4bc2ad' :
+			           d > Math.ceil(mm * 2 / 5) ? '#357ba3' :
+			           d > Math.ceil(mm * 1 / 5) ? '#3e356b' :
+			                      '#0b0405';
+			}
+
+			function style(feature) {
+			    return {
+			        fillColor: getColor(feature.properties[value]),
+			        weight: 1,
+			        opacity: 1,
+			        color: 'black',
+			        dashArray: '3',
+			        fillOpacity: 0.5
+			    };
+			}
+
+			function onEachFeature(feature, layer) {
+			    // does this feature have a property named popupContent?
+			    if (feature.properties && feature.properties.popup) {
+			        layer.bindPopup(feature.properties.popup, {maxWidth : 700});
+			    }
+			}
+
+			var planLayer = L.geoJSON(null, {
+				onEachFeature: onEachFeature,
+				style: style,
+				filter: (feature) => {
+					let text = [feature.properties.Counties].toString();
+					const arr = text.split(",");
+					const isCountyChecked = arr.some(v => checkboxStates.counties.includes(v));
+					const isTypeChecked = checkboxStates.types.includes(feature.properties.Type);
+
+					return isCountyChecked && isTypeChecked
+				}
+			}).addTo(map);
+
+			planLayer.addData(muni);
+
+			var legend = L.control({position: 'bottomright'});
+
+			legend.onAdd = function (map) {
+
+			    var div = L.DomUtil.create('div', 'info legend'),
+			        grades = [0, Math.ceil(mm / 5), Math.ceil(mm * 2 / 5), Math.ceil(mm * 3 / 5), Math.ceil(mm * 4 / 5)],
+			        labels = [];
+
+			    for (var i = 0; i < grades.length; i++) {
+			        div.innerHTML +=
+			            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+			            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '&ndash;' + mm);
+			    }
+
+			    return div;
+			};
+
+			legend.addTo(map);
+
+			function updateCheckboxStates() {
+			  checkboxStates = {
+			    counties: [],
+					types: []
+			  };
+
+			  for (let input of document.querySelectorAll('input.county')) {
+			    if (input.checked) {
+						checkboxStates.counties.push(input.value);
+			    }
+			  }
+
+				for (let input of document.querySelectorAll('input.type')) {
+					if (input.checked) {
+						checkboxStates.types.push(input.value);
+					};
+				}
+			}
+
+			for (let input of document.querySelectorAll('input.section')) {
+			  //Listen to 'change' event of all inputs
+			  input.onchange = (e) => {
+		    		if (input.checked){
+							planLayer.clearLayers();
+							value = input.value;
+							mm = getMax(muni, value);
+							map.removeControl(legend);
+					    planLayer.addData(muni);
+							legend.addTo(map);
+						}
+			  }
+			}
+
+			for (let input of document.querySelectorAll('input.county')) {
+				//Listen to 'change' event of all inputs
+				input.onchange = (e) => {
+						planLayer.clearLayers();
+						updateCheckboxStates()
+						planLayer.addData(muni);
+				}
+			}
+
+			for (let input of document.querySelectorAll('input.type')) {
+				//Listen to 'change' event of all inputs
+				input.onchange = (e) => {
+						planLayer.clearLayers();
+						updateCheckboxStates()
+						planLayer.addData(muni);
+				}
+			}
+
+			// INIT
+			updateCheckboxStates();
+			planLayer.addData(muni)
+
+		</script>
+	</body>
+</html>
